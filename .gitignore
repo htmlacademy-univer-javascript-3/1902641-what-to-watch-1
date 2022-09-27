@@ -25,3 +25,6 @@ yarn-error.log*
 .idea
 *.sublime*
 .vscode
+
+package.json
+project/node_modules
