@@ -1,4 +1,6 @@
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import WelcomeFilm from '../../pages/welcome-movie-page/welcome-movie-page';
+
 
 type AppScreenProps = {
   errorsCount: number;
