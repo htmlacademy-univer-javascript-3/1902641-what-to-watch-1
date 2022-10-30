@@ -1,7 +1,7 @@
 import InjectedSvg from '../../components/injected-svg/injected-svg';
 import Logo from '../../components/logo/logo';
 
-function warningPage(): JSX.Element {
+function WarningPage(): JSX.Element {
   return (
     <>
       <InjectedSvg isContainPlaySymbol={false} />
@@ -30,4 +30,4 @@ function warningPage(): JSX.Element {
     </>
   );
 }
-export default warningPage;
+export default WarningPage;

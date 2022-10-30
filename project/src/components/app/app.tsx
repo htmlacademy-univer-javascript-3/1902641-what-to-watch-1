@@ -6,6 +6,7 @@ import FilmCard from '../../pages/film-card/film-card';
 import AddReview from '../../pages/add-review/add-review';
 import MyList from '../../pages/my-list/my-list';
 import PlayerPage from '../../pages/player/player-page';
+import WarningPage from '../../pages/404-page/404-page';
 
 type mainFilmProps = {
   title: string,
@@ -41,6 +42,10 @@ function App(MainScreenProps : mainFilmProps): JSX.Element {
         <Route
           path={AppRoute.Player}
           element={<PlayerPage/>}
+        />
+        <Route
+          path={'*'}
+          element={<WarningPage/>}
         />
       </Routes>
     </BrowserRouter>
