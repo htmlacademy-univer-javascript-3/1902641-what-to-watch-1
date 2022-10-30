@@ -1,11 +1,11 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import MainPage from '../../pages/main-page/main-page';
 import {AppRoute} from '../../const';
-import SignInPage from '../../pages/sign-in-page/sign-in-page';
-import FilmCard from '../../pages/film-card-page/film-card-page';
-import AddReview from '../../pages/add-review-page/add-review-page';
-import MyList from '../../pages/my-list-page/my-list-page';
-import PlayerPage from '../../pages/player-page/player-page';
+import SignInPage from '../../pages/sign-in/sign-in';
+import FilmCard from '../../pages/film-card/film-card';
+import AddReview from '../../pages/add-review/add-review';
+import MyList from '../../pages/my-list/my-list';
+import PlayerPage from '../../pages/player/player-page';
 
 type mainFilmProps = {
   title: string,

@@ -5,7 +5,7 @@ import App from './components/app/app';
 const MainScreenProps = {
   title: 'FILM TITLE',
   genre: 'Drama',
-  year: 2023
+  year: 2014
 };
 
 
