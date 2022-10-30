@@ -123,10 +123,6 @@ function MainPage(props: MainScreenProps): JSX.Element {
             <FilmCard/>
             <FilmCard/>
             <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
           </div>
 
           <div className="catalog__more">

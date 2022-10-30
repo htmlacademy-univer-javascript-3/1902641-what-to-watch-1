@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 
 const MainScreenProps = {
-  title: 'FILM TITLE',
+  title: 'The Grand Budapest Hotel',
   genre: 'Drama',
   year: 2014
 };
