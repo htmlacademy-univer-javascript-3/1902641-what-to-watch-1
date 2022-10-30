@@ -1,4 +1,3 @@
-import InjectedSvg from '../../components/injected-svg/injected-svg';
 import Logo from '../../components/logo/logo';
 import FilmCard from '../film-card/film-card';
 
@@ -13,7 +12,6 @@ type MainScreenProps = {
 function MainPage(props: MainScreenProps): JSX.Element {
   return (
     <>
-      <InjectedSvg isContainPlaySymbol={false} />
       <section className="film-card">
         <div className="film-card__bg">
           <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
@@ -131,7 +129,7 @@ function MainPage(props: MainScreenProps): JSX.Element {
         </section>
 
         <footer className="page-footer">
-          <Logo lightMode={false}/>
+          <Logo lightMode/>
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
