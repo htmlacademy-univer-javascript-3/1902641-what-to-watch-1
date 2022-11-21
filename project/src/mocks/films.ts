@@ -22,26 +22,26 @@ type NarrativesInfo = NarrativeInfo[];
 
 const Narratives: NarrativesInfo = [
   {
-    'name': 'Moonrise Kingdom',
-    'posterImage': 'https://10.react.pages.academy/static/film/poster/Moonrise_Kingdom.jpg',
-    'previewImage': 'https://10.react.pages.academy/static/film/preview/moonrise-kingdom.jpg',
-    'backgroundImage': 'https://10.react.pages.academy/static/film/background/Moonrise_Kingdom.jpg',
-    'backgroundColor': '#D8E3E5',
-    'description': 'A pair of young lovers flee their New England town, which causes a local search party to fan out to find them.',
-    'rating': 7.9,
-    'scoresCount': 291183,
-    'director': 'Wes Anderson',
+    'name': 'Snatch',
+    'posterImage': 'https://10.react.pages.academy/static/film/poster/Snatch.jpg',
+    'previewImage': 'https://10.react.pages.academy/static/film/preview/snatch.jpg',
+    'backgroundImage': 'https://10.react.pages.academy/static/film/background/Snatch.jpg',
+    'backgroundColor': '#FDFDFC',
+    'description': 'Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.',
+    'rating': 0.2,
+    'scoresCount': 716577,
+    'director': 'Guy Ritchie',
     'starring': [
-      'Jared Gilman',
-      'Kara Hayward',
-      'Bruce Willis'
+      'Jason Statham',
+      'Brad Pitt',
+      'Benicio Del Toro'
     ],
-    'runTime': 94,
-    'genre': 'Adventure',
-    'released': 2012,
-    'id': 7,
+    'runTime': 104,
+    'genre': 'Comedy',
+    'released': 2000,
+    'id': 1,
     'isFavorite': false,
-    'videoLink': 'https://10.react.pages.academy/static/film/video/bubbles.mp4',
+    'videoLink': 'https://10.react.pages.academy/static/film/video/matrix.mp4',
     'previewVideoLink': 'https://10.react.pages.academy/static/film/video/dog.mp4'
   },
   {
@@ -160,27 +160,27 @@ const Narratives: NarrativesInfo = [
     'previewVideoLink': 'https://10.react.pages.academy/static/film/video/traffic.mp4'
   },
   {
-    'name': 'Beach',
-    'posterImage': 'https://10.react.pages.academy/static/film/poster/beach.jpg',
-    'previewImage': 'https://10.react.pages.academy/static/film/preview/beach.jpg',
-    'backgroundImage': 'https://10.react.pages.academy/static/film/background/beach.jpg',
-    'backgroundColor': '#EBC996',
-    'description': 'Vicenarian Richard travels to Thailand and finds himself in possession of a strange map. Rumours state that it leads to a solitary beach paradise, a tropical bliss. Excited and intrigued, he sets out to find it.',
-    'rating': 3.3,
-    'scoresCount': 207824,
-    'director': 'Danny Boyle',
+    'name': 'Moonrise Kingdom',
+    'posterImage': 'https://10.react.pages.academy/static/film/poster/Moonrise_Kingdom.jpg',
+    'previewImage': 'https://10.react.pages.academy/static/film/preview/moonrise-kingdom.jpg',
+    'backgroundImage': 'https://10.react.pages.academy/static/film/background/Moonrise_Kingdom.jpg',
+    'backgroundColor': '#D8E3E5',
+    'description': 'A pair of young lovers flee their New England town, which causes a local search party to fan out to find them.',
+    'rating': 7.9,
+    'scoresCount': 291183,
+    'director': 'Wes Anderson',
     'starring': [
-      'Leonardo DiCaprio',
-      'Daniel York',
-      'Patcharawan Patarakijjanon'
+      'Jared Gilman',
+      'Kara Hayward',
+      'Bruce Willis'
     ],
-    'runTime': 119,
+    'runTime': 94,
     'genre': 'Adventure',
-    'released': 2000,
-    'id': 10,
+    'released': 2012,
+    'id': 7,
     'isFavorite': false,
-    'videoLink': 'https://10.react.pages.academy/static/film/video/matrix.mp4',
-    'previewVideoLink': 'https://10.react.pages.academy/static/film/video/traffic.mp4'
+    'videoLink': 'https://10.react.pages.academy/static/film/video/bubbles.mp4',
+    'previewVideoLink': 'https://10.react.pages.academy/static/film/video/dog.mp4'
   },
   {
     'name': 'Aviator',
