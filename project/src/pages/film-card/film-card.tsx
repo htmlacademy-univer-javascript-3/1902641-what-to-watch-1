@@ -8,7 +8,7 @@ type FilmCardProps = {
   mouseOverHandler: (evt: MouseEvent<HTMLDivElement>) => void;
 }
 
-function FilmCard({ title, image, id, mouseOverHandler }: FilmCardProps): JSX.Element {
+function FilmCard({title, image, id, mouseOverHandler}: FilmCardProps): JSX.Element {
   return (
     <article className="small-film-card catalog__films-card" onMouseOver={mouseOverHandler}>
       <div className="small-film-card__image">

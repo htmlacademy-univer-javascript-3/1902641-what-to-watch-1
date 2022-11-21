@@ -10,8 +10,11 @@ import WarningPage from '../../pages/404-page/404-page';
 import PrivateRoute from '../private-route/private-route';
 import Promo from '../../types/promo';
 import Films from '../../types/fims';
+import { MouseEvent } from 'react';
 
 type AppProps = {
+  // reviews: any;
+  // similar: any;
   promo: Promo,
   films: Films
 }
@@ -33,7 +36,7 @@ function App(props: AppProps): JSX.Element {
         >
           <Route
             path={':id'}
-            element={<FilmCard />}
+            element={<FilmCard title={''} image={''} id={0} />}
           />
         </Route>
         <Route
