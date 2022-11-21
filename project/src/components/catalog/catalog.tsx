@@ -1,4 +1,4 @@
-import FilmCard from '../film-card/film-card';
+import FilmCard from '../card/card';
 import Films from '../../types/fims';
 
 type FilmCatalogProps = {
@@ -44,26 +44,7 @@ function Catalog({films}: FilmCatalogProps): JSX.Element {
       </ul>
 
       <div className="catalog__films-list">
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
-        <FilmCard/>
+        {films.map((film) => <FilmCard key={film.id} title={film.name} image={film.previewImage}/>)}
       </div>
 
       <div className="catalog__more">
