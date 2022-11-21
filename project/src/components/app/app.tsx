@@ -2,27 +2,33 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import MainPage from '../../pages/main-page/main-page';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import SignInPage from '../../pages/sign-in/sign-in';
-import FilmCard from '../../pages/film-card/film-card';
 import AddReview from '../../pages/add-review/add-review';
 import MyList from '../../pages/my-list/my-list';
 import PlayerPage from '../../pages/player/player-page';
 import WarningPage from '../../pages/404-page/404-page';
 import PrivateRoute from '../private-route/private-route';
+import Promo from '../../types/promo';
+import Films from '../../types/fims';
+import Reviews from '../../types/reviews';
+import Similar from '../../types/similar';
+import Favorite from '../../types/favorite';
+import FilmPage from '../../pages/film-page/film-page';
 
-type mainFilmProps = {
-  title: string,
-  genre: string,
-  year: number
+type AppProps = {
+  reviews: Reviews;
+  similar: Similar;
+  promo: Promo,
+  films: Films,
+  favorite: Favorite
 }
 
-function App(MainScreenProps: mainFilmProps): JSX.Element {
+function App(props: AppProps): JSX.Element {
   return (
     <BrowserRouter>
-
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage mainFilmProps={MainScreenProps} />}
+          element={<MainPage promo={props.promo} films={props.films} />}
         />
         <Route
           path={AppRoute.Login}
@@ -33,7 +39,7 @@ function App(MainScreenProps: mainFilmProps): JSX.Element {
         >
           <Route
             path={':id'}
-            element={<FilmCard />}
+            element={<FilmPage films={props.films} reviews={props.reviews} similar={props.similar} />}
           />
         </Route>
         <Route
@@ -54,9 +60,9 @@ function App(MainScreenProps: mainFilmProps): JSX.Element {
           path={AppRoute.MyList}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthorizationStatus.Auth}
             >
-              <MyList />
+              <MyList myList={props.favorite} />
             </PrivateRoute>
           }
         />
@@ -67,6 +73,17 @@ function App(MainScreenProps: mainFilmProps): JSX.Element {
             path={':id'}
             element={<PlayerPage />}
           />
+        </Route>
+        <Route
+          path={`:id${AppRoute.AddReview}`}
+          element={
+            <PrivateRoute
+              authorizationStatus={AuthorizationStatus.Auth}
+            >
+              <AddReview />
+            </PrivateRoute>
+          }
+        >
         </Route>
         <Route
           path={'*'}
