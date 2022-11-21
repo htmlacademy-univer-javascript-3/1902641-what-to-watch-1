@@ -1,42 +1,23 @@
-function FilmCard(): JSX.Element {
+import { MouseEvent } from 'react';
+import { Link } from 'react-router-dom';
+
+type FilmCardProps = {
+  title: string,
+  image: string,
+  id: number,
+  mouseOverHandler: (evt: MouseEvent<HTMLDivElement>) => void;
+}
+
+function FilmCard({ title, image, id, mouseOverHandler }: FilmCardProps): JSX.Element {
   return (
-    <>
-      <article className="small-film-card catalog__films-card">
-        <div className="small-film-card__image">
-          <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-        </div>
-        <h3 className="small-film-card__title">
-          <a className="small-film-card__link" href="film-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-        </h3>
-      </article>
-
-      <article className="small-film-card catalog__films-card">
-        <div className="small-film-card__image">
-          <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-        </div>
-        <h3 className="small-film-card__title">
-          <a className="small-film-card__link" href="film-page.html">Bohemian Rhapsody</a>
-        </h3>
-      </article>
-
-      <article className="small-film-card catalog__films-card">
-        <div className="small-film-card__image">
-          <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-        </div>
-        <h3 className="small-film-card__title">
-          <a className="small-film-card__link" href="film-page.html">Macbeth</a>
-        </h3>
-      </article>
-
-      <article className="small-film-card catalog__films-card">
-        <div className="small-film-card__image">
-          <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-        </div>
-        <h3 className="small-film-card__title">
-          <a className="small-film-card__link" href="film-page.html">Aviator</a>
-        </h3>
-      </article>
-    </>
+    <article className="small-film-card catalog__films-card" onMouseOver={mouseOverHandler}>
+      <div className="small-film-card__image">
+        <img src={image} alt={title} width="280" height="175" />
+      </div>
+      <h3 className="small-film-card__title">
+        <Link className="small-film-card__link" to={`/films/${id}`}>{title}</Link>
+      </h3>
+    </article>
   );
 }
 export default FilmCard;

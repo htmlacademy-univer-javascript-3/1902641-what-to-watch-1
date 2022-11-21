@@ -8,21 +8,21 @@ import MyList from '../../pages/my-list/my-list';
 import PlayerPage from '../../pages/player/player-page';
 import WarningPage from '../../pages/404-page/404-page';
 import PrivateRoute from '../private-route/private-route';
+import Promo from '../../types/promo';
+import Films from '../../types/fims';
 
-type mainFilmProps = {
-  title: string,
-  genre: string,
-  year: number
+type AppProps = {
+  promo: Promo,
+  films: Films
 }
 
-function App(MainScreenProps: mainFilmProps): JSX.Element {
+function App(props: AppProps): JSX.Element {
   return (
     <BrowserRouter>
-
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage mainFilmProps={MainScreenProps} />}
+          element={<MainPage promo={props.promo} films={props.films} />}
         />
         <Route
           path={AppRoute.Login}
