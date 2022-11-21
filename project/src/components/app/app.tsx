@@ -2,7 +2,6 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import MainPage from '../../pages/main-page/main-page';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import SignInPage from '../../pages/sign-in/sign-in';
-import FilmCard from '../../pages/film-card/film-card';
 import AddReview from '../../pages/add-review/add-review';
 import MyList from '../../pages/my-list/my-list';
 import PlayerPage from '../../pages/player/player-page';
@@ -10,13 +9,17 @@ import WarningPage from '../../pages/404-page/404-page';
 import PrivateRoute from '../private-route/private-route';
 import Promo from '../../types/promo';
 import Films from '../../types/fims';
-import { MouseEvent } from 'react';
+import Reviews from '../../types/reviews';
+import Similar from '../../types/similar';
+import Favorite from '../../types/favorite';
+import FilmPage from '../../pages/film-page/film-page';
 
 type AppProps = {
-  // reviews: any;
-  // similar: any;
+  reviews: Reviews;
+  similar: Similar;
   promo: Promo,
-  films: Films
+  films: Films,
+  favorite: Favorite
 }
 
 function App(props: AppProps): JSX.Element {
@@ -36,7 +39,7 @@ function App(props: AppProps): JSX.Element {
         >
           <Route
             path={':id'}
-            element={<FilmCard title={''} image={''} id={0} />}
+            element={<FilmPage films={props.films} reviews={props.reviews} similar={props.similar} />}
           />
         </Route>
         <Route
@@ -57,9 +60,9 @@ function App(props: AppProps): JSX.Element {
           path={AppRoute.MyList}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthorizationStatus.Auth}
             >
-              <MyList />
+              <MyList myList={props.favorite} />
             </PrivateRoute>
           }
         />
@@ -70,6 +73,17 @@ function App(props: AppProps): JSX.Element {
             path={':id'}
             element={<PlayerPage />}
           />
+        </Route>
+        <Route
+          path={`:id${AppRoute.AddReview}`}
+          element={
+            <PrivateRoute
+              authorizationStatus={AuthorizationStatus.Auth}
+            >
+              <AddReview />
+            </PrivateRoute>
+          }
+        >
         </Route>
         <Route
           path={'*'}

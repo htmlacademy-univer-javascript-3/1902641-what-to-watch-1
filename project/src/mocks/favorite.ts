@@ -1,5 +1,6 @@
 const favorite = [
   {
+    'id': 1,
     'name': 'Moonrise Kingdom',
     'posterImage': 'https://10.react.pages.academy/static/film/poster/Moonrise_Kingdom.jpg',
     'previewImage': 'https://10.react.pages.academy/static/film/preview/moonrise-kingdom.jpg',
@@ -20,7 +21,7 @@ const favorite = [
     'isFavorite': false
   },
   {
-    'id': 1,
+    'id': 2,
     'name': 'The Grand Budapest Hotel',
     'posterImage': 'img/the-grand-budapest-hotel-poster.jpg',
     'previewImage': 'img/the-grand-budapest-hotel.jpg',
