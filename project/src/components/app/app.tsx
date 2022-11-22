@@ -8,7 +8,7 @@ import PlayerPage from '../../pages/player/player-page';
 import WarningPage from '../../pages/404-page/404-page';
 import PrivateRoute from '../private-route/private-route';
 import Promo from '../../types/promo';
-import Films from '../../types/fims';
+import Films from '../../types/films';
 import Reviews from '../../types/reviews';
 import Similar from '../../types/similar';
 import Favorite from '../../types/favorite';

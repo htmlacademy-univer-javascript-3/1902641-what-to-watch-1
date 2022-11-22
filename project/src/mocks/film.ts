@@ -1,4 +1,4 @@
-const film = {
+const FILM = {
   'id': 1,
   'name': 'The Grand Budapest Hotel',
   'posterImage': 'img/the-grand-budapest-hotel-poster.jpg',
@@ -20,4 +20,4 @@ const film = {
   'isFavorite': false
 };
 
-export default film;
+export default FILM;

@@ -1,26 +1,6 @@
-export type NarrativeInfo = {
-  id: number
-  name: string
-  posterImage: string
-  previewImage: string
-  backgroundImage: string
-  backgroundColor: string
-  videoLink: string
-  previewVideoLink: string
-  description: string
-  rating: number
-  scoresCount: number
-  director: string
-  starring: string[]
-  runTime: number
-  genre: string
-  released: number
-  isFavorite: boolean
-};
+import Films from '../types/films';
 
-type NarrativesInfo = NarrativeInfo[];
-
-const Narratives: NarrativesInfo = [
+const FILMS: Films = [
   {
     'name': 'Snatch',
     'posterImage': 'https://10.react.pages.academy/static/film/poster/Snatch.jpg',
@@ -207,4 +187,4 @@ const Narratives: NarrativesInfo = [
   },
 ];
 
-export default Narratives;
+export default FILMS;

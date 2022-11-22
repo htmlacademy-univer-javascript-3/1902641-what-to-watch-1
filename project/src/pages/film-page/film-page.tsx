@@ -5,7 +5,7 @@ import ReviewList from '../../components/review-list/review-list';
 import Reviews from '../../types/reviews';
 import SimilarList from '../../components/similar-list/similar-list';
 import Similar from '../../types/similar';
-import Films from '../../types/fims';
+import Films from '../../types/films';
 import { useParams } from 'react-router-dom';
 import WarningPage from '../404-page/404-page';
 

@@ -1,4 +1,4 @@
-const similar = [
+const SIMILAR = [
   {
     'name': 'Snatch',
     'posterImage': 'https://10.react.pages.academy/static/film/poster/Snatch.jpg',
@@ -576,4 +576,4 @@ const similar = [
   }
 ];
 
-export default similar;
+export default SIMILAR;
