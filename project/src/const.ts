@@ -7,9 +7,17 @@ export enum AppRoute {
   Player = '/player/:id',
 }
 
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export enum FilmPageTabs {
+  Overview = 'Overview',
+  Details = 'Details',
+  Reviews = 'Reviews'
+}
+
 export const VIDEO_PREVIEW_DELAY = 1000;
