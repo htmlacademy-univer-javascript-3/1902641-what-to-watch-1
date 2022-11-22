@@ -9,6 +9,7 @@ export enum AppRoute {
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',
-  NoAuth = 'NO-AUTH',
+  NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+export const VIDEO_PREVIEW_DELAY = 1000;
