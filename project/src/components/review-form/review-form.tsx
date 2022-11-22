@@ -6,7 +6,7 @@ function ReviewForm(): JSX.Element {
     reviewText: '',
   });
 
-  const fieldChangeHandle = (evt: ChangeEvent<HTMLTextAreaElement>) => {
+  const textareaChangeHandle = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     setFormData({ ...formData, reviewText: evt.target.value });
   };
 
@@ -46,7 +46,7 @@ function ReviewForm(): JSX.Element {
           name="review-text"
           id="review-text"
           placeholder="Review text"
-          onChange={fieldChangeHandle}
+          onChange={textareaChangeHandle}
           value={formData.reviewText}
         >
 

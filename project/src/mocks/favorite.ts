@@ -1,4 +1,4 @@
-const favorite = [
+const FAVORITE = [
   {
     'id': 1,
     'name': 'Moonrise Kingdom',
@@ -43,4 +43,4 @@ const favorite = [
   },
 ];
 
-export default favorite;
+export default FAVORITE;

@@ -1,7 +1,7 @@
 import Catalog from '../../components/catalog/catalog';
 import Logo from '../../components/logo/logo';
 import PromoCard from '../../components/promo-card/promo-card';
-import Films from '../../types/fims';
+import Films from '../../types/films';
 import Promo from '../../types/promo';
 
 type MainScreenProps = {

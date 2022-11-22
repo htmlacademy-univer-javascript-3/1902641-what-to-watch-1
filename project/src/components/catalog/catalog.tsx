@@ -1,13 +1,13 @@
 import FilmCard from '../card/card';
-import Films from '../../types/fims';
-import { MouseEvent } from 'react';
+import Films from '../../types/films';
+import { useState } from 'react';
 
 type FilmCatalogProps = {
   films: Films
 }
 
 function Catalog({ films }: FilmCatalogProps): JSX.Element {
-  // const [setPointedFilm] = useState(0);
+  const [pointedFilm, setPointedFilm] = useState(NaN);
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -48,13 +48,16 @@ function Catalog({ films }: FilmCatalogProps): JSX.Element {
       <div className="catalog__films-list">
         {films.map((film) => (
           <FilmCard
-            id={film.id}
             key={film.id}
+            id={film.id}
+
             title={film.name}
             image={film.previewImage}
-            mouseOverHandler={(evt: MouseEvent<HTMLDivElement>) => {
-              evt.preventDefault();
-              // setPointedFilm(film.id);
+            previewVideo={film.previewVideoLink}
+
+            isPointed={pointedFilm === film.id}
+            changeParentState={(pointedId: number) => {
+              setPointedFilm(pointedId);
             }}
           />)
         )}
