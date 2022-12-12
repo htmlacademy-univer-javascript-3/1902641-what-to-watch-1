@@ -46,4 +46,6 @@ export const GenresArray = [
   'Thrillers'
 ];
 
+export const DEFAULT_GENRE = 'All genres';
+
 export const VIDEO_PREVIEW_DELAY = 1000;
