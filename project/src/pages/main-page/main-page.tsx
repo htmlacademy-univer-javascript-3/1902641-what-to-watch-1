@@ -1,12 +1,10 @@
 import Catalog from '../../components/catalog/catalog';
 import Logo from '../../components/logo/logo';
 import PromoCard from '../../components/promo-card/promo-card';
-import Films from '../../types/films';
 import Promo from '../../types/promo';
 
 type MainScreenProps = {
-  promo: Promo,
-  films: Films
+  promo: Promo
 }
 
 function MainPage(props: MainScreenProps): JSX.Element {
@@ -14,7 +12,7 @@ function MainPage(props: MainScreenProps): JSX.Element {
     <>
       <PromoCard promo={props.promo} />
       <div className="page-content">
-        <Catalog films={props.films}/>
+        <Catalog />
         <footer className="page-footer">
           <Logo lightMode/>
 

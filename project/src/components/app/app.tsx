@@ -28,7 +28,7 @@ function App(props: AppProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage promo={props.promo} films={props.films} />}
+          element={<MainPage promo={props.promo} />}
         />
         <Route
           path={AppRoute.Login}
