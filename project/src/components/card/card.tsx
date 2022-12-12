@@ -13,7 +13,7 @@ type FilmCardProps = {
   onChangePointedFilm: (id: number) => void
 }
 function FilmCard(props: FilmCardProps): JSX.Element {
-  const {id, title, image, previewVideo, isPointed, onChangePointedFilm: onChangePointedFilm} = props;
+  const {id, title, image, previewVideo, isPointed, onChangePointedFilm} = props;
   const dispatch = useAppDispatch();
   return (
     <article
