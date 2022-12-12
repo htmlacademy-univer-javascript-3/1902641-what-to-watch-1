@@ -20,32 +20,5 @@ export enum FilmPageTabs {
   Reviews = 'Reviews'
 }
 
-export enum Genres {
-  All = 'All genres',
-  Comedies = 'Comedies',
-  Crime = 'Crime',
-  Documentary = 'Documentary',
-  Dramas = 'Dramas',
-  Horror = 'Horror',
-  KidsFamily = 'Kids & Family',
-  Romance = 'Romance',
-  SciFi = 'Sci-Fi',
-  Thrillers = 'Thrillers'
-}
-
-export const GenresArray = [
-  'All genres',
-  'Comedies',
-  'Crime',
-  'Documentary',
-  'Dramas',
-  'Horror',
-  'Kids & Family',
-  'Romance',
-  'Sci-Fi',
-  'Thrillers'
-];
-
 export const DEFAULT_GENRE = 'All genres';
-
 export const VIDEO_PREVIEW_DELAY = 1000;
