@@ -13,6 +13,9 @@ import Reviews from '../../types/reviews';
 import Similar from '../../types/similar';
 import Favorite from '../../types/favorite';
 import FilmPage from '../../pages/film-page/film-page';
+import LoadingPage from '../../pages/loading-page/loading-page';
+import { useAppSelector } from '../../hooks';
+import {isCheckedAuth} from '../../utils/check-auth';
 
 type AppProps = {
   reviews: Reviews;
@@ -23,6 +26,13 @@ type AppProps = {
 }
 
 function App(props: AppProps): JSX.Element {
+  const {authorizationStatus, isDataLoaded} = useAppSelector((state) => state);
+
+  if (isCheckedAuth(authorizationStatus) || isDataLoaded) {
+    return (
+      <LoadingPage />
+    );
+  }
   return (
     <BrowserRouter>
       <Routes>
@@ -49,7 +59,7 @@ function App(props: AppProps): JSX.Element {
             path={':id/review'}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
+                authorizationStatus={authorizationStatus}
               >
                 <AddReview />
               </PrivateRoute>
@@ -60,7 +70,7 @@ function App(props: AppProps): JSX.Element {
           path={AppRoute.MyList}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.Auth}
+              authorizationStatus={authorizationStatus}
             >
               <MyList myList={props.favorite} />
             </PrivateRoute>
@@ -78,7 +88,7 @@ function App(props: AppProps): JSX.Element {
           path={`:id${AppRoute.AddReview}`}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.Auth}
+              authorizationStatus={authorizationStatus}
             >
               <AddReview />
             </PrivateRoute>
@@ -95,3 +105,7 @@ function App(props: AppProps): JSX.Element {
 }
 
 export default App;
+function isCheckedAuth(authorizationStatus: any) {
+  throw new Error('Function not implemented.');
+}
+

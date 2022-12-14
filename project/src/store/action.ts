@@ -1,4 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
+import { AuthorizationStatus } from '../const';
+import Films from '../types/films';
 
 const resetMainScreen = createAction('main/resetState');
 const changeGenre = createAction<{ currentGenre: string }>('main/changeGenre');
@@ -7,11 +9,19 @@ const resetCardCount = createAction('main/resetCardCount');
 const resetFilmScreen = createAction('film/resetState');
 const changeFilmTab = createAction<{ currentTab: string }>('film/changeFilmTab');
 
+const loadFilms = createAction<Films>('data/loadFilms');
+const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStatus');const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+const setError = createAction<string | null>('app/setError');
+
 export {
   resetMainScreen,
   changeGenre,
   increaseCardCount,
   resetCardCount,
   resetFilmScreen,
-  changeFilmTab
+  changeFilmTab,
+  loadFilms,
+  requireAuthorization,
+  setDataLoadedStatus,
+  setError
 };
