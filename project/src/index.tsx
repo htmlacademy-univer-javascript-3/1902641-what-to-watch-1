@@ -8,6 +8,12 @@ import FAVORITE from './mocks/favorite';
 import FILMS from './mocks/films';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import ErrorForm from './components/error-form/error-form';
+import {checkAuthAction, fetchFilmsAction} from './store/api-actions';
+
+
+store.dispatch(checkAuthAction());
+store.dispatch(fetchFilmsAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -15,6 +21,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ErrorForm />
       <App
         promo={promo}
         films={FILMS}

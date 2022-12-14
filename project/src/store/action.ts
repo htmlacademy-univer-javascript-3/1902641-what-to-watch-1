@@ -10,7 +10,8 @@ const resetFilmScreen = createAction('film/resetState');
 const changeFilmTab = createAction<{ currentTab: string }>('film/changeFilmTab');
 
 const loadFilms = createAction<Films>('data/loadFilms');
-const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStatus');const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+const setError = createAction<string | null>('app/setError');
 
 export {
   resetMainScreen,
@@ -19,7 +20,8 @@ export {
   resetCardCount,
   resetFilmScreen,
   changeFilmTab,
-  changeFilmTab,
   loadFilms,
-  requireAuthorization
+  requireAuthorization,
+  setDataLoadedStatus,
+  setError
 };
