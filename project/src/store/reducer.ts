@@ -6,7 +6,7 @@ import {
   increaseCardCount, loadFilms, requireAuthorization,
   resetCardCount,
   resetFilmScreen,
-  resetMainScreen, setError, setDataLoadedStatus,
+  resetMainScreen, setError, setDataLoadedStatus, setAvatar,
 } from './action';
 import { filterFilmsByGenre } from '../utils/get-film';
 import Films from '../types/films';
@@ -19,6 +19,7 @@ type InitialState = {
   authorizationStatus: string,
   filmPageTab: string,
   error: string | null,
+  avatar: string | null
   isDataLoaded: boolean,
 }
 
@@ -32,7 +33,8 @@ const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
   isDataLoaded: false,
   filmPageTab: FilmPageTabs.Overview as string,
-  error: null
+  error: null,
+  avatar: null
 };
 export const reducer = createReducer(initialState, (builder) => {
   builder
@@ -86,5 +88,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setError, (state, action) => {
       state.error = action.payload;
+    })
+    .addCase(setAvatar, (state, action) => {
+      state.avatar = action.payload;
     });
 });
