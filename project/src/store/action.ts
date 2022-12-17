@@ -1,6 +1,9 @@
 import {createAction} from '@reduxjs/toolkit';
-import { AppRoute, AuthorizationStatus } from '../const';
+import { AuthorizationStatus } from '../const';
+import {Comments} from '../types/comments';
+import Film from '../types/film';
 import Films from '../types/films';
+import Similar from '../types/similar';
 
 const resetMainScreen = createAction('main/resetState');
 const changeGenre = createAction<{ currentGenre: string }>('main/changeGenre');
@@ -13,8 +16,12 @@ const loadFilms = createAction<Films>('data/loadFilms');
 const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStatus');const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 const setError = createAction<string | null>('app/setError');
 
-const redirectToRoute = createAction<AppRoute>('app/redirectToRoute');
+const redirectToRoute = createAction<string>('app/redirectToRoute');
 const setAvatar = createAction<string | null>('user/avatar');
+
+const loadFilm = createAction<Film>('data/loadFilmById');
+const loadComments = createAction<Comments>('data/loadCommentsById');
+const loadSimilar = createAction<Similar>('data/loadSimilarById');
 
 export {
   resetMainScreen,
@@ -28,5 +35,8 @@ export {
   setDataLoadedStatus,
   setError,
   redirectToRoute,
-  setAvatar
+  setAvatar,
+  loadSimilar,
+  loadFilm,
+  loadComments
 };

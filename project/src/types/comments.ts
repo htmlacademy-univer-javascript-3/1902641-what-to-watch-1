@@ -1,4 +1,4 @@
-type Comments = [{
+export type Comments = {
   comment: string
   date: string
   id: number
@@ -6,6 +6,4 @@ type Comments = [{
   user: {
     id: number
     name: string
-  }}];
-
-export default Comments;
+  }}[];

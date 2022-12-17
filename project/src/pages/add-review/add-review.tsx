@@ -1,14 +1,36 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
 import { AppRoute } from '../../const';
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { setDataLoadedStatus } from '../../store/action';
+import { fetchFilmByID } from '../../store/api-actions';
+import LoadingPage from '../loading-page/loading-page';
 
 function AddReview(): JSX.Element {
+  const id = Number(useParams().id);
+
+  const film = useAppSelector((state) => state.film);
+  const loadStatus = useAppSelector((state) => state.isDataLoaded);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setDataLoadedStatus(true));
+    dispatch(fetchFilmByID(id.toString()));
+    dispatch(setDataLoadedStatus(false));
+  }, [id, dispatch]);
+
+
+  if (loadStatus) {
+    return (<LoadingPage />);
+  }
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={film?.backgroundImage} alt={film?.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -19,10 +41,10 @@ function AddReview(): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <Link to={`${AppRoute.Film}/${id}`} className="breadcrumbs__link">{film?.name}</Link>
               </li>
               <li className="breadcrumbs__item">
-                <Link className="breadcrumbs__link" to={`${AppRoute.Film}/:id${AppRoute.AddReview}`}>
+                <Link className="breadcrumbs__link" to={`${AppRoute.Film}/${id}${AppRoute.AddReview}`}>
                   Add review
                 </Link>
               </li>
@@ -33,7 +55,7 @@ function AddReview(): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={film?.posterImage} alt={film?.name} width="218" height="327" />
         </div>
       </div>
 
