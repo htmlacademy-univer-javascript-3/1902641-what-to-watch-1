@@ -16,6 +16,8 @@ import FilmPage from '../../pages/film-page/film-page';
 import LoadingPage from '../../pages/loading-page/loading-page';
 import { useAppSelector } from '../../hooks';
 import {isCheckedAuth} from '../../utils/check-auth';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 type AppProps = {
   reviews: Reviews;
@@ -34,7 +36,7 @@ function App(props: AppProps): JSX.Element {
     );
   }
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Root}
@@ -100,7 +102,7 @@ function App(props: AppProps): JSX.Element {
           element={<WarningPage />}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
