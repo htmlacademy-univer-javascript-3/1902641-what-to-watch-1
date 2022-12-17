@@ -1,38 +1,49 @@
 import Logo from '../../components/logo/logo';
-import Reviews from '../../types/reviews';
-import Similar from '../../types/similar';
-import Films from '../../types/films';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import WarningPage from '../404-page/404-page';
 import FilmDescription from '../../components/description/description';
 import SimilarList from '../../components/similar-list/similar-list';
 import UserBlock from '../../components/user-block/user-block';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { setDataLoadedStatus } from '../../store/action';
+import { useEffect } from 'react';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import LoadingPage from '../loading-page/loading-page';
 
-type FilmScreenProps = {
-  films: Films,
-  reviews: Reviews,
-  similar: Similar
-}
-
-function FilmScreen(props: FilmScreenProps): JSX.Element {
-  const {films, reviews, similar} = props;
-
+function FilmScreen(): JSX.Element {
   const id = Number(useParams().id);
-  const film = films.find((x) => x.id === id);
+  const film = useAppSelector((state) => state.film);
+  const comments = useAppSelector((state) => state.comments);
+  const similar = useAppSelector((state) => state.similar);
+  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const loadStatus = useAppSelector((state) => state.isDataLoaded);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setDataLoadedStatus(true));
+    dispatch(fetchFilmByID(id.toString()));
+    dispatch(fetchCommentsByID(id.toString()));
+    dispatch(fetchSimilarByID(id.toString()));
+    dispatch(setDataLoadedStatus(false));
+  }, [id, dispatch]);
+
+  if (loadStatus) {
+    return (<LoadingPage />);
+  }
 
   if (!film) {
-    return <WarningPage/>;
+    return <WarningPage />;
   }
   return (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={film.backgroundImage} alt={film.name}/>
+            <img src={film.backgroundImage} alt={film.name} />
           </div>
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header film-card__head">
-            <Logo lightMode={false}/>
+            <Logo lightMode={false} />
             <UserBlock />
           </header>
           <div className="film-card__wrap">
@@ -56,7 +67,8 @@ function FilmScreen(props: FilmScreenProps): JSX.Element {
                   <span>My list</span>
                   <span className="film-card__count">9</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
+                {authStatus === AuthorizationStatus.Auth &&
+                  <Link to={`${AppRoute.Film}/${id}${AppRoute.AddReview}`} className="btn film-card__button">Add review</Link>}
               </div>
             </div>
           </div>
@@ -66,7 +78,7 @@ function FilmScreen(props: FilmScreenProps): JSX.Element {
             <div className="film-card__poster film-card__poster--big">
               <img src={film.posterImage} alt={film.name} width="218" height="327" />
             </div>
-            <FilmDescription film={film} reviews={reviews} />
+            <FilmDescription film={film} reviews={comments} />
           </div>
         </div>
       </section>
@@ -83,3 +95,15 @@ function FilmScreen(props: FilmScreenProps): JSX.Element {
   );
 }
 export default FilmScreen;
+function fetchFilmByID(arg0: string): any {
+  throw new Error('Function not implemented.');
+}
+
+function fetchCommentsByID(arg0: string): any {
+  throw new Error('Function not implemented.');
+}
+
+function fetchSimilarByID(arg0: string): any {
+  throw new Error('Function not implemented.');
+}
+

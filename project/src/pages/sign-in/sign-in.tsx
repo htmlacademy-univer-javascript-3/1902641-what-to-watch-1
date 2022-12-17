@@ -1,7 +1,7 @@
 import { FormEvent, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 import Logo from '../../components/logo/logo';
-import { AppRoute } from '../../const';
+// import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
@@ -12,7 +12,6 @@ function SignInPage(): JSX.Element {
 
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
@@ -80,7 +79,7 @@ function SignInPage(): JSX.Element {
                   });
                 }
 
-                navigate(AppRoute.Root);
+                // navigate(AppRoute.Root);
 
               }}
             >
