@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import { AuthorizationStatus } from '../const';
+import { AppRoute, AuthorizationStatus } from '../const';
 import Films from '../types/films';
 
 const resetMainScreen = createAction('main/resetState');
@@ -13,6 +13,9 @@ const loadFilms = createAction<Films>('data/loadFilms');
 const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStatus');const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 const setError = createAction<string | null>('app/setError');
 
+const redirectToRoute = createAction<AppRoute>('app/redirectToRoute');
+const setAvatar = createAction<string | null>('user/avatar');
+
 export {
   resetMainScreen,
   changeGenre,
@@ -23,5 +26,7 @@ export {
   loadFilms,
   requireAuthorization,
   setDataLoadedStatus,
-  setError
+  setError,
+  redirectToRoute,
+  setAvatar
 };

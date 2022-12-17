@@ -24,9 +24,6 @@ root.render(
       <ErrorForm />
       <App
         promo={promo}
-        films={FILMS}
-        reviews={COMMENTS}
-        similar={SIMILAR}
         favorite={FAVORITE}
       />
     </Provider>

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import WarningPage from '../404-page/404-page';
 import FilmDescription from '../../components/description/description';
 import SimilarList from '../../components/similar-list/similar-list';
+import UserBlock from '../../components/user-block/user-block';
 
 type FilmScreenProps = {
   films: Films,
@@ -32,16 +33,7 @@ function FilmScreen(props: FilmScreenProps): JSX.Element {
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header film-card__head">
             <Logo lightMode={false}/>
-            <ul className="user-block">
-              <li className="user-block__item">
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </div>
-              </li>
-              <li className="user-block__item">
-                <a className="user-block__link"href="/">Sign out</a>
-              </li>
-            </ul>
+            <UserBlock />
           </header>
           <div className="film-card__wrap">
             <div className="film-card__desc">
