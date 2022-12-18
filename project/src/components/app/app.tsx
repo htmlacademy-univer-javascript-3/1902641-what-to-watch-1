@@ -7,7 +7,6 @@ import MyList from '../../pages/my-list/my-list';
 import PlayerPage from '../../pages/player/player-page';
 import WarningPage from '../../pages/404-page/404-page';
 import PrivateRoute from '../private-route/private-route';
-import Promo from '../../types/promo';
 import Favorite from '../../types/favorite';
 import FilmPage from '../../pages/film-page/film-page';
 import LoadingPage from '../../pages/loading-page/loading-page';
@@ -17,12 +16,12 @@ import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
 
 type AppProps = {
-  promo: Promo,
   favorite: Favorite
 }
 
 function App(props: AppProps): JSX.Element {
-  const { authorizationStatus, isDataLoaded } = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isDataLoaded = useAppSelector((state) => state.isDataLoaded);
 
   if (isCheckedAuth(authorizationStatus) || isDataLoaded) {
     return (
@@ -34,7 +33,7 @@ function App(props: AppProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage promo={props.promo} />}
+          element={<MainPage />}
         />
         <Route
           path={AppRoute.Login}

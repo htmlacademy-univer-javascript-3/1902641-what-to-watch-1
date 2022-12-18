@@ -3,15 +3,15 @@ import {AppDispatch, State} from '../types/state';
 import {AxiosInstance} from 'axios';
 import Films from '../types/films';
 import {APIRoute, AppRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR} from '../const';
-import {loadFilms, requireAuthorization, setError, setDataLoadedStatus, redirectToRoute, setAvatar, loadComments, loadSimilar, loadFilm} from './action';
+import {loadFilms, requireAuthorization, setError, setDataLoadedStatus, redirectToRoute, setAvatar, loadSimilar, loadFilm, loadPromo, setFilmLoadedStatus, setFilmFoundStatus} from './action';
 import {AuthData} from '../types/auth-data';
 import {UserData} from '../types/user-data';
 import {dropToken, saveToken} from '../token';
 import { store } from '.';
-import {Comments} from '../types/comments';
 import Similar from '../types/similar';
 import Film from '../types/film';
 import { UserComment } from '../types/user-comment';
+import Promo from '../types/promo';
 
 export const clearErrorAction = createAsyncThunk(
   'app/clearError',
@@ -30,9 +30,21 @@ export const fetchFilmsAction = createAsyncThunk<void, undefined, {
   'data/fetchFilms',
   async (_arg, {dispatch, extra: api}) => {
     const {data} = await api.get<Films>(APIRoute.Films);
-    dispatch(setDataLoadedStatus(true));
-    dispatch(setDataLoadedStatus(false));
+    // dispatch(setDataLoadedStatus(true));
+    // dispatch(setDataLoadedStatus(false));
     dispatch(loadFilms(data));
+  },
+);
+
+export const fetchPromoAction = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch,
+  state: State,
+  extra: AxiosInstance
+}>(
+  'data/fetchPromo',
+  async (_arg, {dispatch, extra: api}) => {
+    const {data} = await api.get<Promo>(APIRoute.Promo);
+    dispatch(loadPromo(data));
   },
 );
 
@@ -100,8 +112,15 @@ export const fetchCommentsByID = createAsyncThunk<void, string, {
 }>(
   'data/fetchCommentsById',
   async (filmId: string, {dispatch, extra: api}) => {
-    const {data} = await api.get<Comments>(`${APIRoute.Comments}/${filmId}`);
-    dispatch(loadComments(data));
+    try {
+      const {data} = await api.get<Film>(`${APIRoute.Films}/${filmId}`);
+      dispatch(loadFilm(data));
+      dispatch(setFilmLoadedStatus(true));
+      dispatch(setFilmFoundStatus(true));
+    } catch {
+      dispatch(setFilmLoadedStatus(true));
+      dispatch(setFilmFoundStatus(false));
+    }
   },
 );
 

@@ -6,13 +6,15 @@ import {
   increaseCardCount, loadFilms, requireAuthorization,
   resetCardCount,
   resetFilmScreen,
-  resetMainScreen, setError, setDataLoadedStatus, setAvatar, loadComments, loadFilm, loadSimilar,
+  resetMainScreen, setError, setDataLoadedStatus, setAvatar, loadComments, loadFilm, loadSimilar, loadPromo, setFilmLoadedStatus,
+  setFilmFoundStatus
 } from './action';
 import { filterFilmsByGenre } from '../utils/get-film';
 import Films from '../types/films';
-import {Comments} from '../types/comments';
+import { Comments } from '../types/comments';
 import Film from '../types/film';
 import Similar from '../types/similar';
+import Promo from '../types/promo';
 
 type InitialState = {
   films: Films;
@@ -25,8 +27,11 @@ type InitialState = {
   avatar: string | null,
   comments: Comments,
   similar: Similar,
-  film: Film | null
+  film: Film | null,
+  promo: Promo | null,
   isDataLoaded: boolean,
+  isFilmFoundStatus: boolean | null,
+  isFilmLoadedStatus: boolean | null
 }
 
 const initialState: InitialState = {
@@ -43,7 +48,10 @@ const initialState: InitialState = {
   avatar: null,
   comments: [],
   similar: [],
-  film: null
+  film: null,
+  promo: null,
+  isFilmFoundStatus: null,
+  isFilmLoadedStatus: null
 };
 export const reducer = createReducer(initialState, (builder) => {
   builder
@@ -92,6 +100,16 @@ export const reducer = createReducer(initialState, (builder) => {
       state.isDataLoaded = action.payload;
     })
 
+    .addCase(loadPromo, (state, action) => {
+      state.promo = action.payload;
+    })
+
+    .addCase(setFilmLoadedStatus, (state, action) => {
+      state.isFilmLoadedStatus = action.payload;
+    })
+    .addCase(setFilmFoundStatus, (state, action) => {
+      state.isFilmFoundStatus = action.payload;
+    })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
     })

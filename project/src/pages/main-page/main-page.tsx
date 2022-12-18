@@ -1,16 +1,12 @@
 import Catalog from '../../components/catalog/catalog';
 import Logo from '../../components/logo/logo';
 import PromoCard from '../../components/promo-card/promo-card';
-import Promo from '../../types/promo';
 
-type MainScreenProps = {
-  promo: Promo
-}
 
-function MainPage(props: MainScreenProps): JSX.Element {
+function MainPage(): JSX.Element {
   return (
     <>
-      <PromoCard promo={props.promo} />
+      <PromoCard />
       <div className="page-content">
         <Catalog />
         <footer className="page-footer">

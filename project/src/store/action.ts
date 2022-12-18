@@ -3,6 +3,7 @@ import { AuthorizationStatus } from '../const';
 import {Comments} from '../types/comments';
 import Film from '../types/film';
 import Films from '../types/films';
+import Promo from '../types/promo';
 import Similar from '../types/similar';
 
 const resetMainScreen = createAction('main/resetState');
@@ -13,6 +14,7 @@ const resetFilmScreen = createAction('film/resetState');
 const changeFilmTab = createAction<{ currentTab: string }>('film/changeFilmTab');
 
 const loadFilms = createAction<Films>('data/loadFilms');
+const loadPromo = createAction<Promo>('data/loadPromo');
 const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStatus');const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 const setError = createAction<string | null>('app/setError');
 
@@ -22,6 +24,9 @@ const setAvatar = createAction<string | null>('user/avatar');
 const loadFilm = createAction<Film>('data/loadFilmById');
 const loadComments = createAction<Comments>('data/loadCommentsById');
 const loadSimilar = createAction<Similar>('data/loadSimilarById');
+const setFilmFoundStatus = createAction<boolean>('film/setFilmFoundStatus');
+const setFilmLoadedStatus = createAction<boolean>('film/setFilmLoadedStatus');
+
 
 export {
   resetMainScreen,
@@ -38,5 +43,8 @@ export {
   setAvatar,
   loadSimilar,
   loadFilm,
-  loadComments
+  loadComments,
+  loadPromo,
+  setFilmFoundStatus,
+  setFilmLoadedStatus
 };

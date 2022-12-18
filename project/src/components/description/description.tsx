@@ -8,12 +8,19 @@ import {FilmPageTabs} from '../../const';
 import { useAppSelector } from '../../hooks';
 
 type FilmDescProps = {
-  film: Film,
+  film: Film | null,
   reviews: Reviews
 }
 
 function FilmDescription ({film, reviews}: FilmDescProps): JSX.Element {
   const currentTab = useAppSelector((state) => state.filmPageTab);
+  if (!film) {
+    return (
+      <div className="film-card__desc">
+        <Tabs currentTab={currentTab} />
+      </div>
+    );
+  }
   return (
     <div className="film-card__desc">
       <Tabs currentTab={currentTab} />
@@ -36,7 +43,7 @@ function FilmDescription ({film, reviews}: FilmDescProps): JSX.Element {
           released={film.released}
         />}
 
-      {currentTab === FilmPageTabs.Reviews && <ReviewList reviews={reviews}/>}
+      {currentTab === FilmPageTabs.Reviews && <ReviewList reviews={reviews} />}
     </div>
   );
 }

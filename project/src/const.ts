@@ -25,7 +25,7 @@ export const VIDEO_PREVIEW_DELAY = 1000;
 export const TIMEOUT_SHOW_ERROR = 5000;
 
 export enum APIRoute {
-
+  Promo = '/promo',
   Films = '/films',
   Login = '/login',
   Logout = '/logout',
