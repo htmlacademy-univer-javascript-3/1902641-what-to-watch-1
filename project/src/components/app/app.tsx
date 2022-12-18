@@ -7,24 +7,17 @@ import MyList from '../../pages/my-list/my-list';
 import PlayerPage from '../../pages/player/player-page';
 import WarningPage from '../../pages/404-page/404-page';
 import PrivateRoute from '../private-route/private-route';
-import Promo from '../../types/promo';
-import Favorite from '../../types/favorite';
 import FilmPage from '../../pages/film-page/film-page';
 import LoadingPage from '../../pages/loading-page/loading-page';
 import { useAppSelector } from '../../hooks';
 import { isCheckedAuth } from '../../utils/check-auth';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 
-type AppProps = {
-  promo: Promo,
-  favorite: Favorite
-}
-
-function App(props: AppProps): JSX.Element {
-  const { authorizationStatus, isDataLoaded } = useAppSelector((state) => state);
-
-  if (isCheckedAuth(authorizationStatus) || isDataLoaded) {
+function App(): JSX.Element {
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  if (isCheckedAuth(authorizationStatus)) {
     return (
       <LoadingPage />
     );
@@ -34,15 +27,27 @@ function App(props: AppProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage promo={props.promo} />}
+          element={<MainPage />}
         />
         <Route
-          path={AppRoute.Login}
+          path={AppRoute.SignIn}
           element={<SignInPage />}
         />
         <Route
-          path={AppRoute.Film}
-        >
+          path={AppRoute.MyList}
+          element={
+            <PrivateRoute authorizationStatus={authorizationStatus}>
+              <MyList />
+            </PrivateRoute>
+          }
+        />
+        <Route path={AppRoute.Player}>
+          <Route
+            path={':id'}
+            element={<PlayerPage />}
+          />
+        </Route>
+        <Route path={AppRoute.Film}>
           <Route
             path={':id'}
             element={<FilmPage />}
@@ -51,9 +56,7 @@ function App(props: AppProps): JSX.Element {
           <Route
             path={`:id${AppRoute.AddReview}`}
             element={
-              <PrivateRoute
-                authorizationStatus={authorizationStatus}
-              >
+              <PrivateRoute authorizationStatus={authorizationStatus}>
                 <AddReview />
               </PrivateRoute>
             }
@@ -61,40 +64,11 @@ function App(props: AppProps): JSX.Element {
           </Route>
         </Route>
         <Route
-          path={AppRoute.MyList}
-          element={
-            <PrivateRoute
-              authorizationStatus={authorizationStatus}
-            >
-              <MyList myList={props.favorite} />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path={AppRoute.Player}
-        />
-        <Route
-          path={':id'}
-          element={<PlayerPage />}
-        />
-        <Route
-          path={`:id${AppRoute.AddReview}`}
-          element={
-            <PrivateRoute
-              authorizationStatus={authorizationStatus}
-            >
-              <AddReview />
-            </PrivateRoute>
-          }
-        >
-        </Route>
-        <Route />
-        <Route
           path={'*'}
           element={<WarningPage />}
         />
       </Routes>
-    </HistoryRouter >
+    </HistoryRouter>
   );
 }
 

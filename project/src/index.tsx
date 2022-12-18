@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import promo from './mocks/promo';
-import FAVORITE from './mocks/favorite';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import ErrorForm from './components/error-form/error-form';
-import {checkAuthAction, fetchFilmsAction} from './store/api-actions';
+import {checkAuthAction, fetchFilmsAction, fetchPromoAction} from './store/api-actions';
 
-
-store.dispatch(checkAuthAction());
 store.dispatch(fetchFilmsAction());
+store.dispatch(fetchPromoAction());
+store.dispatch(checkAuthAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -19,10 +17,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ErrorForm />
-      <App
-        promo={promo}
-        favorite={FAVORITE}
-      />
+      <App />
     </Provider>
   </React.StrictMode>,
 );

@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { resetMainScreen } from '../../store/action';
+import {resetMainScreen} from '../../store/main-data/main-data';
 import PreviewPlayer from '../preview-player/preview-player';
 
 type FilmCardProps = {
@@ -9,17 +10,16 @@ type FilmCardProps = {
   image: string,
   id: number,
   previewVideo: string,
-  isPointed: boolean,
-  onChangePointedFilm: (id: number) => void
 }
 function FilmCard(props: FilmCardProps): JSX.Element {
-  const {id, title, image, previewVideo, isPointed, onChangePointedFilm} = props;
+  const {id, title, image, previewVideo} = props;
+  const [isPointed, setIsPointed] = useState(false);
   const dispatch = useAppDispatch();
   return (
     <article
       className="small-film-card catalog__films-card"
-      onMouseEnter={() => onChangePointedFilm(id)}
-      onMouseLeave={() => onChangePointedFilm(NaN)}
+      onMouseEnter={() => setIsPointed(true)}
+      onMouseLeave={() => setIsPointed(false)}
     >
       <div className="small-film-card__image">
         {
