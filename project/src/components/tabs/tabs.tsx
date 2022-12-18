@@ -1,7 +1,6 @@
 import { FilmPageTabs } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { changeFilmTab } from '../../store/action';
-
+import { changeFilmTab } from '../../store/film-data/film-data';
 type tabsPops = {
   currentTab: string;
 }
@@ -17,7 +16,7 @@ function Tabs({ currentTab }: tabsPops): JSX.Element {
             onClick={
               (evt) => {
                 evt.preventDefault();
-                dispatch(changeFilmTab({ currentTab: FilmPageTabs.Overview })); dispatch(changeFilmTab({ currentTab: FilmPageTabs.Overview }));
+                dispatch(changeFilmTab(FilmPageTabs.Overview));
               }
             }
           >
@@ -31,7 +30,7 @@ function Tabs({ currentTab }: tabsPops): JSX.Element {
             onClick={
               (evt) => {
                 evt.preventDefault();
-                dispatch(changeFilmTab({ currentTab: FilmPageTabs.Details }));
+                dispatch(changeFilmTab(FilmPageTabs.Details));
               }
             }
           >
@@ -45,7 +44,7 @@ function Tabs({ currentTab }: tabsPops): JSX.Element {
             onClick={
               (evt) => {
                 evt.preventDefault();
-                dispatch(changeFilmTab({ currentTab: FilmPageTabs.Reviews }));
+                dispatch(changeFilmTab(FilmPageTabs.Reviews));
               }
             }
           >

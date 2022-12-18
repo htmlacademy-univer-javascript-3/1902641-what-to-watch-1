@@ -2,10 +2,11 @@ import FilmCard from '../card/card';
 import GenresFilter from '../genres-filter/genres-filter';
 import { useAppSelector } from '../../hooks';
 import ShowMoreButton from '../show-more-button/show-more-button';
+import { getCardCount, getFilteredFilms } from '../../store/main-data/selectors';
 
 function Catalog(): JSX.Element {
-  const films = useAppSelector((state) => state.filteredFilms);
-  const cardCount = useAppSelector((state) => state.cardCount);
+  const films = useAppSelector(getFilteredFilms);
+  const cardCount = useAppSelector(getCardCount);
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
