@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
 type LogoProps = {
   lightMode: boolean;
@@ -7,7 +8,7 @@ type LogoProps = {
 function Logo({lightMode}:LogoProps): JSX.Element {
   return (
     <div className="logo">
-      <Link className={lightMode ? 'logo__link logo__link--light' : 'logo__link'} to="/">
+      <Link className={lightMode ? 'logo__link logo__link--light' : 'logo__link'} to={AppRoute.Root}>
         <span className="logo__letter logo__letter--1">W</span>
         <span className="logo__letter logo__letter--2">T</span>
         <span className="logo__letter logo__letter--3">W</span>
