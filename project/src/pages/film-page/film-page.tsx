@@ -13,6 +13,7 @@ import { getFilm, getSimilar, getIsFilmFoundStatus, getIsFilmLoadingStatus } fro
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import { getFavoriteCount } from '../../store/main-data/selectors';
 import FilmCardButtons from '../../components/film-card-buttons/film-card-buttons';
+import LoadingPage from '../loading-page/loading-page';
 
 function FilmPage(): JSX.Element {
   const id = Number(useParams().id);
@@ -42,7 +43,7 @@ function FilmPage(): JSX.Element {
   }, [id, authStatus, dispatch]);
 
   if (isFilmLoadingStatus) {
-    return <WarningPage />;
+    return <LoadingPage />;
   }
 
   if (!isFilmFoundStatus) {

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import {resetMainScreen} from '../../store/main-data/main-data';
+import { resetMainScreen } from '../../store/main-data/main-data';
 
 type FilmCardProps = {
   title: string,
@@ -11,6 +11,9 @@ type FilmCardProps = {
 
 function DevFilmCard({ id, title, image }: FilmCardProps): JSX.Element {
   const dispatch = useAppDispatch();
+  const cardClickHandle = () => {
+    dispatch(resetMainScreen());
+  };
   return (
     <article className="small-film-card catalog__films-card">
       <div className="small-film-card__image">
@@ -20,9 +23,7 @@ function DevFilmCard({ id, title, image }: FilmCardProps): JSX.Element {
         <Link
           className="small-film-card__link"
           to={`${AppRoute.Film}/${id}`}
-          onClick={() => {
-            dispatch(resetMainScreen());
-          }}
+          onClick={cardClickHandle}
         >
           {title}
         </Link>

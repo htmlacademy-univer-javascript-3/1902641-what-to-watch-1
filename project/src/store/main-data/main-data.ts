@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {CARDS_PER_STEP, DEFAULT_GENRE, NameSpace} from '../../const';
-import {fetchFilmsAction, fetchPromoAction} from '../api-actions';
+import {changePromoStatusToView, fetchFavoriteFilmsAction, fetchFilmsAction, fetchPromoAction} from '../api-actions';
 import {filterFilmsByGenre} from '../../utils/filter-films-by-genre';
 import { MainData } from '../../types/main-data';
 
@@ -44,6 +44,14 @@ export const mainData = createSlice({
       state.cardCount = state.filteredFilms.length < CARDS_PER_STEP ?
         state.filteredFilms.length :
         8;
+    },
+
+    setIsDataLoaded: (state, action) => {
+      state.isDataLoaded = action.payload;
+    },
+
+    setFavoriteCount: (state, action) => {
+      state.favoriteCount = action.payload;
     }
   },
   extraReducers(builder) {
@@ -52,16 +60,31 @@ export const mainData = createSlice({
         state.isDataLoaded = true;
       })
       .addCase(fetchFilmsAction.fulfilled, (state, action) => {
-        state.films = action.payload;
-        // state.isDataLoaded = false;
+        const films = action.payload;
+
+        state.films = films;
+        state.filteredFilms = films;
+        state.cardCount = films.length < CARDS_PER_STEP ? films.length : 8;
+        state.isDataLoaded = false;
       })
-      //fix there
-      // .addCase(fetchPromoAction.pending, (state) => {
-      //   state.isDataLoaded = true;
-      // })
       .addCase(fetchPromoAction.fulfilled, (state, action) => {
         state.promo = action.payload;
+      })
+
+      .addCase(fetchFavoriteFilmsAction.pending, (state) => {
+        state.isDataLoaded = true;
+      })
+      .addCase(fetchFavoriteFilmsAction.fulfilled, (state, action) => {
+        state.favoriteFilms = action.payload;
+        state.favoriteCount = action.payload.length;
         state.isDataLoaded = false;
+      })
+      .addCase(changePromoStatusToView.fulfilled, (state, action) => {
+        state.promo = action.payload;
+
+      })
+      .addCase(changePromoStatusToView.rejected, (state, action) => {
+        //processErrorHandle('ERROR');
       });
   }
 });
@@ -70,5 +93,5 @@ export const {
   resetMainScreen,
   changeGenre,
   increaseCardCount,
-  resetCardCount
+  setFavoriteCount
 } = mainData.actions;

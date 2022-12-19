@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks';
 import { postComment } from '../../store/api-actions';
@@ -50,7 +50,7 @@ function ReviewForm(): JSX.Element {
           <div className="rating__stars"></div>
           {
             [10, 9, 8, 7, 6, 5, 4, 3, 2, 1].map((number) => (
-              <>
+              <Fragment key={number}>
                 <input
                   className="rating__input"
                   id={`star-${number}`}
@@ -62,7 +62,7 @@ function ReviewForm(): JSX.Element {
                   checked={formData.rating === number}
                 />
                 <label className="rating__label" htmlFor={`star-${number}`}>Rating {number}</label>
-              </>
+              </Fragment>
             ))
           }
         </div>

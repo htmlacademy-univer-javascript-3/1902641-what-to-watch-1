@@ -2,6 +2,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus, favoriteClickType } from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { changeFilmStatusToView, changePromoStatusToView } from '../../store/api-actions';
+import { setFavoriteCount } from '../../store/main-data/main-data';
 import Film from '../../types/film';
 import { FilmStatus } from '../../types/film-status';
 
@@ -29,6 +30,12 @@ function FilmCardButtons(FilmCardButtonsProps: FilmCardButtonsProps): JSX.Elemen
       dispatch(changeFilmStatusToView(filmStatus));
     } else {
       dispatch(changePromoStatusToView(filmStatus));
+    }
+
+    if (film?.isFavorite) {
+      dispatch(setFavoriteCount(favoriteCount - 1));
+    } else {
+      dispatch(setFavoriteCount(favoriteCount + 1));
     }
   };
 
