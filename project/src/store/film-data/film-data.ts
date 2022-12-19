@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { FilmPageTabs, NameSpace} from '../../const';
-import { processErrorHandle } from '../../error-handler';
 import { FilmData } from '../../types/film-data';
 import { filterSimilar } from '../../utils/filter-similar';
 import {changeFilmStatusToView, fetchCommentsByID, fetchFilmByID, fetchSimilarByID} from '../api-actions';
@@ -47,9 +46,6 @@ export const filmData = createSlice({
       })
       .addCase(changeFilmStatusToView.fulfilled, (state, action) => {
         state.film = action.payload;
-      })
-      .addCase(changeFilmStatusToView.rejected, (state, action) => {
-        processErrorHandle('ERROR');
       });
   }
 });
