@@ -4,6 +4,7 @@ import Logo from '../../components/logo/logo';
 import { AuthorizationStatus, AppRoute } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
+import { resetMainScreen } from '../../store/main-data/main-data';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import { AuthData } from '../../types/auth-data';
 
@@ -16,6 +17,7 @@ function SignInPage(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const onSubmit = (authData: AuthData) => {
+    dispatch(resetMainScreen());
     dispatch(loginAction(authData));
   };
 

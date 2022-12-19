@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {CARDS_PER_STEP, DEFAULT_GENRE, NameSpace} from '../../const';
-import {changePromoStatusToView, fetchFavoriteFilmsAction, fetchFilmsAction, fetchPromoAction} from '../api-actions';
+import {changeFilmStatusToView, changePromoStatusToView, fetchFavoriteFilmsAction, fetchFilmsAction, fetchPromoAction} from '../api-actions';
 import {filterFilmsByGenre} from '../../utils/filter-films-by-genre';
 import { MainData } from '../../types/main-data';
 
@@ -49,10 +49,6 @@ export const mainData = createSlice({
     setIsDataLoaded: (state, action) => {
       state.isDataLoaded = action.payload;
     },
-
-    setFavoriteCount: (state, action) => {
-      state.favoriteCount = action.payload;
-    }
   },
   extraReducers(builder) {
     builder
@@ -81,10 +77,19 @@ export const mainData = createSlice({
       })
       .addCase(changePromoStatusToView.fulfilled, (state, action) => {
         state.promo = action.payload;
+        if (action.payload.isFavorite) {
+          state.favoriteCount = state.favoriteCount + 1;
+        } else {
+          state.favoriteCount = state.favoriteCount - 1;
+        }
 
       })
-      .addCase(changePromoStatusToView.rejected, (state, action) => {
-        //processErrorHandle('ERROR');
+      .addCase(changeFilmStatusToView.fulfilled, (state, action) => {
+        if (action.payload.isFavorite) {
+          state.favoriteCount = state.favoriteCount + 1;
+        } else {
+          state.favoriteCount = state.favoriteCount - 1;
+        }
       });
   }
 });
@@ -93,5 +98,4 @@ export const {
   resetMainScreen,
   changeGenre,
   increaseCardCount,
-  setFavoriteCount
 } = mainData.actions;
