@@ -1,8 +1,8 @@
 import {useAppSelector} from '../../hooks';
 import{getError} from '../../store/app-process/selectors';
-import './error-form.css';
+import './error-message.css';
 
-function ErrorForm(): JSX.Element | null {
+function ErrorMessage(): JSX.Element | null {
   const error = useAppSelector(getError);
 
   return (error)
@@ -11,4 +11,4 @@ function ErrorForm(): JSX.Element | null {
 
 }
 
-export default ErrorForm;
+export default ErrorMessage;

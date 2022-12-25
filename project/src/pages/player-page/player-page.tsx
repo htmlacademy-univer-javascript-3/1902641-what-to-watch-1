@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchFilmByID } from '../../store/api-actions';
 import { getFilm, getIsFilmFoundStatus, getIsFilmLoadingStatus } from '../../store/film-data/selectors';
 import { resetMainScreen } from '../../store/main-data/main-data';
-import WarningPage from '../404-page/404-page';
+import WarningPage from '../warning-page/warning-page';
 import LoadingPage from '../loading-page/loading-page';
 
 function PlayerPage(): JSX.Element {

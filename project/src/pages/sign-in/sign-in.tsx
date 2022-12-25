@@ -77,7 +77,7 @@ function SignInPage(): JSX.Element {
               ref={emailRef}
               onChange={() => setIsInvalidEmail(false)}
             />
-            <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
+            <label className="sign-in__label visually-hidden" htmlFor="user-password">Email address</label>
           </div>
         </div>
         <div className={`sign-in__field ${isInvalidPassword && 'sign-in__field--error'}`}>

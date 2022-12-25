@@ -66,7 +66,6 @@ export const mainData = createSlice({
       .addCase(fetchPromoAction.fulfilled, (state, action) => {
         state.promo = action.payload;
       })
-
       .addCase(fetchFavoriteFilmsAction.pending, (state) => {
         state.isDataLoaded = true;
       })
@@ -77,12 +76,12 @@ export const mainData = createSlice({
       })
       .addCase(changePromoStatusToView.fulfilled, (state, action) => {
         state.promo = action.payload;
+
         if (action.payload.isFavorite) {
           state.favoriteCount = state.favoriteCount + 1;
         } else {
           state.favoriteCount = state.favoriteCount - 1;
         }
-
       })
       .addCase(changeFilmStatusToView.fulfilled, (state, action) => {
         if (action.payload.isFavorite) {

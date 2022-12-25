@@ -18,7 +18,6 @@ function Catalog(): JSX.Element {
           <FilmCard
             key={film.id}
             id={film.id}
-
             title={film.name}
             image={film.previewImage}
             previewVideo={film.previewVideoLink}

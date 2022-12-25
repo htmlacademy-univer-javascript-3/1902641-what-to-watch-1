@@ -2,7 +2,7 @@ import {DEFAULT_GENRE} from '../../const';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeGenre} from '../../store/main-data/main-data';
 import {MouseEvent, useState} from 'react';
-import { getAllGenres } from '../../utils/all-genre';
+import { getAllGenres } from '../../utils/get-all-genre';
 import { getFilms } from '../../store/main-data/selectors';
 
 function GenresFilter(): JSX.Element {

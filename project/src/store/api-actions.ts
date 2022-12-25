@@ -6,15 +6,15 @@ import { APIRoute, AppRoute } from '../const';
 import { redirectToRoute } from './action';
 import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';
-import { dropToken } from '../token';
+import { dropToken } from '../services/token';
 import Similar from '../types/similar';
 import Film from '../types/film';
 import { UserComment } from '../types/user-comment';
 import Promo from '../types/promo';
 import { Comments } from '../types/comments';
-import { dropAvatarURL } from '../avatar';
+import { dropAvatarURL } from '../services/avatar';
 import Favorite from '../types/favorite';
-import { processErrorHandle } from '../error-handler';
+import { processErrorHandle } from '../services/error-handler';
 import { FilmStatus } from '../types/film-status';
 
 export const fetchFilmsAction = createAsyncThunk<Films, undefined, {

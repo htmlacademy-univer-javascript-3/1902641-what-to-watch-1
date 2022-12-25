@@ -1,6 +1,6 @@
 import Logo from '../../components/logo/logo';
 import { useParams } from 'react-router-dom';
-import WarningPage from '../404-page/404-page';
+import WarningPage from '../warning-page/warning-page';
 import FilmDescription from '../../components/description/description';
 import SimilarList from '../../components/similar-list/similar-list';
 import UserBlock from '../../components/user-block/user-block';

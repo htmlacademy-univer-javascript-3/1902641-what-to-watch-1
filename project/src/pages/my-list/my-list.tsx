@@ -1,5 +1,4 @@
 import Logo from '../../components/logo/logo';
-import DevFilmCard from '../../components/dev-film/dev-film';
 import UserBlock from '../../components/user-block/user-block';
 import { useEffect } from 'react';
 import { AuthorizationStatus } from '../../const';
@@ -8,6 +7,7 @@ import { getFavoriteFilms, getLoadedDataStatus } from '../../store/main-data/sel
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import LoadingPage from '../loading-page/loading-page';
 import { fetchFavoriteFilmsAction } from '../../store/api-actions';
+import EasyFilmCard from '../../components/easy-film-card/easy-film-card';
 
 function MyList(): JSX.Element {
   const favorite = useAppSelector(getFavoriteFilms);
@@ -41,7 +41,7 @@ function MyList(): JSX.Element {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__films-list">
-          {favorite.map((film) => <DevFilmCard key={film.id} id={film.id} title={film.name} image={film.previewImage}/>)}
+          {favorite.map((film) => <EasyFilmCard key={film.id} id={film.id} title={film.name} image={film.previewImage}/>)}
         </div>
       </section>
 

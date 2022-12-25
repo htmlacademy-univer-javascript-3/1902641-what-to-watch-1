@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { getAvatarURL, saveAvatarURL } from '../../avatar';
+import { getAvatarURL, saveAvatarURL } from '../../services/avatar';
 import {NameSpace, AuthorizationStatus} from '../../const';
-import { saveToken } from '../../token';
+import { saveToken } from '../../services/token';
 import {UserProcess} from '../../types/state';
 import {checkAuthAction, loginAction, logoutAction} from '../api-actions';
 
