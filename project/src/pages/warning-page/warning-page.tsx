@@ -4,10 +4,11 @@ function WarningPage(): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
-        <Logo lightMode={false} />
+        <Logo isLightMode={false} />
 
         <h1 className="page-title user-page__title">Error 404. Page not found.</h1>
       </header>
+
       <div className="sign-in user-page__content">
         <form action="#" className="sign-in__form">
           <div className="sign-in__submit">
@@ -17,7 +18,7 @@ function WarningPage(): JSX.Element {
       </div>
 
       <footer className="page-footer">
-        <Logo lightMode />
+        <Logo isLightMode />
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
         </div>
@@ -25,4 +26,6 @@ function WarningPage(): JSX.Element {
     </div>
   );
 }
+
 export default WarningPage;
+

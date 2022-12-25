@@ -11,4 +11,3 @@ export const getFilteredFilms = (state: State): Films => state[NameSpace.MainScr
 export const getCardCount = (state: State): number => state[NameSpace.MainScreen].cardCount;
 export const getFavoriteFilms = (state: State): Favorite => state[NameSpace.MainScreen].favoriteFilms;
 export const getFavoriteCount = (state: State): number => state[NameSpace.MainScreen].favoriteCount;
-

@@ -1,9 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { getAvatarURL, saveAvatarURL } from '../../services/avatar';
 import {NameSpace, AuthorizationStatus} from '../../const';
-import { saveToken } from '../../services/token';
 import {UserProcess} from '../../types/state';
 import {checkAuthAction, loginAction, logoutAction} from '../api-actions';
+import {saveToken} from '../../services/token';
+import {getAvatarURL, saveAvatarURL} from '../../services/avatar';
 
 const initialState: UserProcess = {
   authorizationStatus: AuthorizationStatus.Unknown,

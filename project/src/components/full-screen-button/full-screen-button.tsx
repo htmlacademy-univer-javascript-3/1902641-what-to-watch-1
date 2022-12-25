@@ -1,4 +1,4 @@
-import { CombinedElement, checkFullScreen, exitFullScreen, requestFullScreen } from '../../utils/full-screen-api';
+import {checkFullScreen, CombinedElement, exitFullScreen, requestFullScreen} from '../../utils/full-screen-api';
 
 export const FullScreenButton = (): JSX.Element => {
   const element = document.querySelector('.player') as CombinedElement;

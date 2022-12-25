@@ -1,19 +1,27 @@
+import {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+
+import {
+  fetchCommentsByID,
+  fetchFavoriteFilmsAction,
+  fetchFilmByID,
+  fetchSimilarByID
+} from '../../store/api-actions';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+
 import Logo from '../../components/logo/logo';
-import { useParams } from 'react-router-dom';
-import WarningPage from '../warning-page/warning-page';
-import FilmDescription from '../../components/description/description';
-import SimilarList from '../../components/similar-list/similar-list';
 import UserBlock from '../../components/user-block/user-block';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeFilmTab } from '../../store/film-data/film-data';
-import { useEffect } from 'react';
-import { AuthorizationStatus, favoriteClickType, FilmPageTabs } from '../../const';
-import { fetchFilmByID, fetchCommentsByID, fetchSimilarByID, fetchFavoriteFilmsAction } from '../../store/api-actions';
-import { getFilm, getSimilar, getIsFilmFoundStatus, getIsFilmLoadingStatus } from '../../store/film-data/selectors';
-import { getAuthorizationStatus } from '../../store/user-process/selectors';
-import { getFavoriteCount } from '../../store/main-data/selectors';
-import FilmCardButtons from '../../components/film-card-buttons/film-card-buttons';
+import FilmDescription from '../../components/film-description/film-description';
+import SimilarList from '../../components/similar-list/similar-list';
 import LoadingPage from '../loading-page/loading-page';
+import WarningPage from '../warning-page/warning-page';
+
+import {AuthorizationStatus, favoriteClickType, FilmPageTabs} from '../../const';
+import {getFilm, getIsFilmFoundStatus, getIsFilmLoadingStatus, getSimilar} from '../../store/film-data/selectors';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {changeFilmTab} from '../../store/film-data/film-data';
+import {getFavoriteCount} from '../../store/main-data/selectors';
+import FilmCardButtons from '../../components/film-card-buttons/film-card-buttons';
 
 function FilmPage(): JSX.Element {
   const id = Number(useParams().id);
@@ -61,7 +69,7 @@ function FilmPage(): JSX.Element {
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header film-card__head">
-            <Logo lightMode={false}/>
+            <Logo isLightMode={false}/>
 
             <UserBlock />
           </header>
@@ -99,7 +107,7 @@ function FilmPage(): JSX.Element {
         <SimilarList similar={similar} />
 
         <footer className="page-footer">
-          <Logo lightMode />
+          <Logo isLightMode />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>

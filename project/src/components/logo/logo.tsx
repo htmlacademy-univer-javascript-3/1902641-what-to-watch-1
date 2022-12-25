@@ -1,18 +1,19 @@
-import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
-import { useAppDispatch } from '../../hooks';
-import { resetMainScreen } from '../../store/main-data/main-data';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
+import {useAppDispatch} from '../../hooks';
+import {resetMainScreen} from '../../store/main-data/main-data';
 
 type LogoProps = {
-  lightMode: boolean;
+  isLightMode: boolean;
 }
 
-function Logo({lightMode}:LogoProps): JSX.Element {
+function Logo({isLightMode: isLightVersion}: LogoProps): JSX.Element {
   const dispatch = useAppDispatch();
+
   return (
     <div className="logo">
       <Link
-        className={lightMode ? 'logo__link logo__link--light' : 'logo__link'}
+        className={isLightVersion ? 'logo__link logo__link--light' : 'logo__link'}
         to={AppRoute.Root}
         onClick={
           () => {
@@ -27,4 +28,5 @@ function Logo({lightMode}:LogoProps): JSX.Element {
     </div>
   );
 }
+
 export default Logo;

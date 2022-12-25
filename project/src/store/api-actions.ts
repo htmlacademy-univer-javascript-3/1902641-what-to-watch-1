@@ -1,21 +1,21 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AppDispatch, State } from '../types/state';
-import { AxiosInstance } from 'axios';
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {AppDispatch, State} from '../types/state';
+import {AxiosInstance} from 'axios';
 import Films from '../types/films';
-import { APIRoute, AppRoute } from '../const';
-import { redirectToRoute } from './action';
-import { AuthData } from '../types/auth-data';
-import { UserData } from '../types/user-data';
-import { dropToken } from '../services/token';
+import {APIRoute, AppRoute} from '../const';
+import {redirectToRoute} from './action';
+import {AuthData} from '../types/auth-data';
+import {UserData} from '../types/user-data';
+import {dropToken} from '../services/token';
 import Similar from '../types/similar';
 import Film from '../types/film';
-import { UserComment } from '../types/user-comment';
+import {Comments} from '../types/comments';
+import {UserComment} from '../types/user-comment';
 import Promo from '../types/promo';
-import { Comments } from '../types/comments';
-import { dropAvatarURL } from '../services/avatar';
+import {FilmStatus} from '../types/film-status';
 import Favorite from '../types/favorite';
-import { processErrorHandle } from '../services/error-handler';
-import { FilmStatus } from '../types/film-status';
+import {dropAvatarURL} from '../services/avatar';
+import {processErrorHandle} from '../services/process-error-handle';
 
 export const fetchFilmsAction = createAsyncThunk<Films, undefined, {
   dispatch: AppDispatch,

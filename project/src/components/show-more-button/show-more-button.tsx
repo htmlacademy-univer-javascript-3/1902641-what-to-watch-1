@@ -1,5 +1,6 @@
 import {useAppDispatch} from '../../hooks';
-import { increaseCardCount } from '../../store/main-data/main-data';
+import {increaseCardCount} from '../../store/main-data/main-data';
+
 type ShowMoreBtnProps = {
   isAllCardsLoaded: boolean;
 }

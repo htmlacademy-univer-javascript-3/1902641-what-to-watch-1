@@ -1,8 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {CARDS_PER_STEP, DEFAULT_GENRE, NameSpace} from '../../const';
-import {changeFilmStatusToView, changePromoStatusToView, fetchFavoriteFilmsAction, fetchFilmsAction, fetchPromoAction} from '../api-actions';
+import {
+  changeFilmStatusToView,
+  changePromoStatusToView,
+  fetchFavoriteFilmsAction,
+  fetchFilmsAction,
+  fetchPromoAction
+} from '../api-actions';
 import {filterFilmsByGenre} from '../../utils/filter-films-by-genre';
-import { MainData } from '../../types/main-data';
+import {MainData} from '../../types/main-data';
 
 const initialState: MainData = {
   films: [],

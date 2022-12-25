@@ -5,7 +5,7 @@ type SimilarListProps = {
   similar: Similar;
 }
 
-function SimilarList({ similar }: SimilarListProps): JSX.Element {
+function SimilarList({similar}: SimilarListProps): JSX.Element {
   return (
     <section className="catalog catalog--like-this">
       <h2 className="catalog__title">More like this</h2>

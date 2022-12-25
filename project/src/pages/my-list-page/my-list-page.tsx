@@ -1,15 +1,15 @@
 import Logo from '../../components/logo/logo';
-import UserBlock from '../../components/user-block/user-block';
-import { useEffect } from 'react';
-import { AuthorizationStatus } from '../../const';
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import { getFavoriteFilms, getLoadedDataStatus } from '../../store/main-data/selectors';
-import { getAuthorizationStatus } from '../../store/user-process/selectors';
-import LoadingPage from '../loading-page/loading-page';
-import { fetchFavoriteFilmsAction } from '../../store/api-actions';
 import EasyFilmCard from '../../components/easy-film-card/easy-film-card';
+import UserBlock from '../../components/user-block/user-block';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {getFavoriteFilms, getLoadedDataStatus} from '../../store/main-data/selectors';
+import {useEffect} from 'react';
+import {fetchFavoriteFilmsAction} from '../../store/api-actions';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {AuthorizationStatus} from '../../const';
+import LoadingPage from '../loading-page/loading-page';
 
-function MyList(): JSX.Element {
+function MyListPage(): JSX.Element {
   const favorite = useAppSelector(getFavoriteFilms);
   const authStatus = useAppSelector(getAuthorizationStatus);
 
@@ -26,10 +26,11 @@ function MyList(): JSX.Element {
   if (isDataLoaded) {
     return <LoadingPage />;
   }
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
-        <Logo lightMode={false} />
+        <Logo isLightMode={false} />
 
         <h1 className="page-title user-page__title">
           My list<span className="user-page__film-count">{favorite.length}</span>
@@ -46,7 +47,7 @@ function MyList(): JSX.Element {
       </section>
 
       <footer className="page-footer">
-        <Logo lightMode={false} />
+        <Logo isLightMode />
 
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
@@ -55,4 +56,5 @@ function MyList(): JSX.Element {
     </div>
   );
 }
-export default MyList;
+
+export default MyListPage;
