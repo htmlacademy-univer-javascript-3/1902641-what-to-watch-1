@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import ReviewForm from '../../components/review-form/review-form';
+import {AppRoute} from '../../const';
+import {Link, useParams} from 'react-router-dom';
 import UserBlock from '../../components/user-block/user-block';
-import { AppRoute } from '../../const';
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import { fetchFilmByID } from '../../store/api-actions';
-import { getFilm } from '../../store/film-data/selectors';
-import { getLoadedDataStatus } from '../../store/main-data/selectors';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useEffect} from 'react';
+import {fetchFilmByID} from '../../store/api-actions';
 import LoadingPage from '../loading-page/loading-page';
+import {getLoadedDataStatus} from '../../store/main-data/selectors';
+import {getFilm} from '../../store/film-data/selectors';
 
-function AddReview(): JSX.Element {
+function AddReviewPage(): JSX.Element {
   const id = Number(useParams().id);
 
   const film = useAppSelector(getFilm);
@@ -36,7 +36,7 @@ function AddReview(): JSX.Element {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header">
-          <Logo lightMode={false}/>
+          <Logo isLightMode={false}/>
 
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
@@ -62,4 +62,5 @@ function AddReview(): JSX.Element {
     </section>
   );
 }
-export default AddReview;
+
+export default AddReviewPage;

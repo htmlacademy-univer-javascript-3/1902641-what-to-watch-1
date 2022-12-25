@@ -29,6 +29,7 @@ function ReviewList({reviews}: ReviewsProps): JSX.Element {
           />))}
       </div>
     </div>
+
   );
 }
 

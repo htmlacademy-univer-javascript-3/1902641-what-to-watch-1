@@ -1,27 +1,33 @@
-import { Route, Routes } from 'react-router-dom';
-import MainPage from '../../pages/main-page/main-page';
-import { AppRoute } from '../../const';
-import SignInPage from '../../pages/sign-in/sign-in';
-import AddReview from '../../pages/add-review/add-review';
-import MyList from '../../pages/my-list/my-list';
-import PlayerPage from '../../pages/player/player-page';
-import WarningPage from '../../pages/404-page/404-page';
-import PrivateRoute from '../private-route/private-route';
-import FilmPage from '../../pages/film-page/film-page';
-import LoadingPage from '../../pages/loading-page/loading-page';
-import { useAppSelector } from '../../hooks';
-import { isCheckedAuth } from '../../utils/check-auth';
-import HistoryRouter from '../history-route/history-route';
+import {Route, Routes} from 'react-router-dom';
+import {AppRoute} from '../../const';
+
 import browserHistory from '../../browser-history';
-import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import HistoryRouter from '../history-route/history-route';
+
+import MainPage from '../../pages/main-page/main-page';
+import SignInScreen from '../../pages/sign-in-page/sign-in-page';
+import MyListPage from '../../pages/my-list-page/my-list-page';
+import FilmPage from '../../pages/film-page/film-page';
+import PlayerPage from '../../pages/player-page/player-page';
+import WarningPage from '../../pages/warning-page/warning-page';
+import AddReviewPage from '../../pages/add-review-page/add-review-page';
+import LoadingPage from '../../pages/loading-page/loading-page';
+import PrivateRoute from '../private-route/private-route';
+
+import {useAppSelector} from '../../hooks';
+import {isCheckedAuth} from '../../utils/check-auth';
+
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
+
   if (isCheckedAuth(authorizationStatus)) {
     return (
       <LoadingPage />
     );
   }
+
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
@@ -31,13 +37,13 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.SignIn}
-          element={<SignInPage />}
+          element={<SignInScreen />}
         />
         <Route
           path={AppRoute.MyList}
           element={
             <PrivateRoute authorizationStatus={authorizationStatus}>
-              <MyList />
+              <MyListPage />
             </PrivateRoute>
           }
         />
@@ -57,7 +63,7 @@ function App(): JSX.Element {
             path={`:id${AppRoute.AddReview}`}
             element={
               <PrivateRoute authorizationStatus={authorizationStatus}>
-                <AddReview />
+                <AddReviewPage />
               </PrivateRoute>
             }
           >

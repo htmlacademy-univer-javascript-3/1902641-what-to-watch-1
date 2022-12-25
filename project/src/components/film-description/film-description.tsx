@@ -1,10 +1,11 @@
-import Tabs from '../tabs/tabs';
-import {FilmPageTabs} from '../../const';
-import { useAppSelector } from '../../hooks';
-import { getFilmPageTab, getFilm, getComments } from '../../store/film-data/selectors';
-import Details from '../details/details';
+import {useAppSelector} from '../../hooks';
+
+import FilmTabs from '../film-tabs/film-tabs';
 import Overview from '../overview/overview';
+import Details from '../details/details';
 import ReviewList from '../review-list/review-list';
+import {FilmPageTabs} from '../../const';
+import {getComments, getFilm, getFilmPageTab} from '../../store/film-data/selectors';
 
 function FilmDescription (): JSX.Element {
   const currentTab = useAppSelector(getFilmPageTab);
@@ -17,7 +18,7 @@ function FilmDescription (): JSX.Element {
 
   return (
     <div className="film-card__desc">
-      <Tabs currentTab={currentTab} />
+      <FilmTabs currentTab={currentTab} />
 
       {currentTab === FilmPageTabs.Overview &&
         <Overview
@@ -41,6 +42,5 @@ function FilmDescription (): JSX.Element {
     </div>
   );
 }
-
 
 export default FilmDescription;

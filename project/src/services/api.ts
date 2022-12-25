@@ -1,7 +1,7 @@
 import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import { getToken } from './token';
 import {StatusCodes} from 'http-status-codes';
-import { processErrorHandle } from './error-handler';
+import { processErrorHandle } from './process-error-handle';
 
 const StatusCodeMapping: Record<number, boolean> = {
   [StatusCodes.BAD_REQUEST]: true,
@@ -19,6 +19,7 @@ export const createAPI = (): AxiosInstance => {
     baseURL: BACKEND_URL,
     timeout: REQUEST_TIMEOUT,
   });
+
   api.interceptors.request.use(
     (config: AxiosRequestConfig) => {
       const token = getToken();

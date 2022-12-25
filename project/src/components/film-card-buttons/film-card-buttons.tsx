@@ -1,9 +1,9 @@
-import { useNavigate, Link } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus, favoriteClickType } from '../../const';
-import { useAppDispatch } from '../../hooks';
-import { changeFilmStatusToView, changePromoStatusToView } from '../../store/api-actions';
+import {AppRoute, AuthorizationStatus, favoriteClickType} from '../../const';
+import {Link, useNavigate} from 'react-router-dom';
 import Film from '../../types/film';
-import { FilmStatus } from '../../types/film-status';
+import {FilmStatus} from '../../types/film-status';
+import {changeFilmStatusToView, changePromoStatusToView} from '../../store/api-actions';
+import {useAppDispatch} from '../../hooks';
 
 type FilmCardButtonsProps = {
   id: number,

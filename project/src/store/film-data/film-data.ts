@@ -1,8 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { FilmPageTabs, NameSpace} from '../../const';
-import { FilmData } from '../../types/film-data';
-import { filterSimilar } from '../../utils/filter-similar';
-import {changeFilmStatusToView, fetchCommentsByID, fetchFilmByID, fetchSimilarByID} from '../api-actions';
+import {FilmPageTabs, NameSpace} from '../../const';
+import {
+  changeFilmStatusToView,
+  fetchCommentsByID,
+  fetchFilmByID,
+  fetchSimilarByID
+} from '../api-actions';
+import {FilmData} from '../../types/film-data';
+import {filterSimilar} from '../../utils/filter-similar';
 
 const initialState: FilmData = {
   film: null,
@@ -31,6 +36,7 @@ export const filmData = createSlice({
       })
       .addCase(fetchFilmByID.fulfilled, (state, action) => {
         state.film = action.payload;
+
         state.isFilmFoundStatus = true;
         state.isFilmLoadingStatus = false;
       })

@@ -1,5 +1,5 @@
-import { AuthorizationStatus } from '../const.js';
 import {store} from '../store';
+import {AuthorizationStatus} from '../const';
 
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus,

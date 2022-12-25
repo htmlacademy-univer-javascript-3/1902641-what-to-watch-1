@@ -1,12 +1,12 @@
-import { useState, useEffect, MutableRefObject, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { FullScreenButton } from '../../components/full-screen-button/full-screen-button';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchFilmByID } from '../../store/api-actions';
-import { getFilm, getIsFilmFoundStatus, getIsFilmLoadingStatus } from '../../store/film-data/selectors';
-import { resetMainScreen } from '../../store/main-data/main-data';
-import WarningPage from '../404-page/404-page';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {getFilm, getIsFilmFoundStatus, getIsFilmLoadingStatus} from '../../store/film-data/selectors';
+import {MutableRefObject, useEffect, useRef, useState} from 'react';
 import LoadingPage from '../loading-page/loading-page';
+import WarningPage from '../warning-page/warning-page';
+import {fetchFilmByID} from '../../store/api-actions';
+import {useNavigate, useParams} from 'react-router-dom';
+import {resetMainScreen} from '../../store/main-data/main-data';
+import {FullScreenButton} from '../../components/full-screen-button/full-screen-button';
 
 function PlayerPage(): JSX.Element {
   const id = Number(useParams().id);
@@ -112,4 +112,5 @@ function PlayerPage(): JSX.Element {
     </div>
   );
 }
+
 export default PlayerPage;

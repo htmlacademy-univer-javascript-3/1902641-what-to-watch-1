@@ -1,16 +1,16 @@
 import Similar from '../../types/similar';
-import DevFilmCard from '../dev-film/dev-film';
+import EasyFilmCard from '../easy-film-card/easy-film-card';
 
 type SimilarListProps = {
   similar: Similar;
 }
 
-function SimilarList({ similar }: SimilarListProps): JSX.Element {
+function SimilarList({similar}: SimilarListProps): JSX.Element {
   return (
     <section className="catalog catalog--like-this">
       <h2 className="catalog__title">More like this</h2>
       <div className="catalog__films-list">
-        {similar.map((film) => <DevFilmCard key={film.id} id={film.id} title={film.name} image={film.previewImage}/>)}
+        {similar.map((film) => <EasyFilmCard key={film.id} id={film.id} title={film.name} image={film.previewImage}/>)}
       </div>
     </section>
   );

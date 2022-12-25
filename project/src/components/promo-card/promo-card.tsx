@@ -1,9 +1,9 @@
 import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';
-import { useAppSelector } from '../../hooks';
-import { getFavoriteCount, getPromo } from '../../store/main-data/selectors';
-import { getAuthorizationStatus } from '../../store/user-process/selectors';
-import { favoriteClickType } from '../../const';
+import {useAppSelector} from '../../hooks';
+import {getFavoriteCount, getPromo} from '../../store/main-data/selectors';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {favoriteClickType} from '../../const';
 import FilmCardButtons from '../film-card-buttons/film-card-buttons';
 
 function PromoCard(): JSX.Element {
@@ -24,7 +24,7 @@ function PromoCard(): JSX.Element {
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header film-card__head">
-        <Logo lightMode={false}/>
+        <Logo isLightMode={false}/>
 
         <UserBlock />
       </header>

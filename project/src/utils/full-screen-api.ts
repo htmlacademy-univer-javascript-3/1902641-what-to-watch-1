@@ -1,4 +1,4 @@
-import { IElementFullScreen, IDocumentFullscreen } from '../types/full-screen-types';
+import {IDocumentFullscreen, IElementFullScreen} from '../types/full-screen-types';
 
 export interface CombinedElement extends HTMLElement, IElementFullScreen {}
 export interface CombinedDocument extends Document, IDocumentFullscreen {}

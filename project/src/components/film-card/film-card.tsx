@@ -1,20 +1,23 @@
-import { useState } from 'react';
 import {Link} from 'react-router-dom';
-import { AppRoute } from '../../const';
-import { useAppDispatch } from '../../hooks';
-import { resetMainScreen } from '../../store/main-data/main-data';
+import {AppRoute} from '../../const';
 import PreviewPlayer from '../preview-player/preview-player';
+import {useAppDispatch} from '../../hooks';
+import {useState} from 'react';
+import {resetMainScreen} from '../../store/main-data/main-data';
 
 type FilmCardProps = {
+  id: number,
   title: string,
   image: string,
-  id: number,
   previewVideo: string,
 }
+
 function FilmCard(props: FilmCardProps): JSX.Element {
   const {id, title, image, previewVideo} = props;
+
   const [isPointed, setIsPointed] = useState(false);
   const dispatch = useAppDispatch();
+
   return (
     <article
       className="small-film-card catalog__films-card"
@@ -41,4 +44,5 @@ function FilmCard(props: FilmCardProps): JSX.Element {
     </article>
   );
 }
+
 export default FilmCard;
