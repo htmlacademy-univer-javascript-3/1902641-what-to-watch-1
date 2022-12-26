@@ -44,7 +44,7 @@ export enum NameSpace {
   App ='APP'
 }
 
-export enum favoriteClickType {
+export enum FavoriteClickType {
   Film = 'FILM',
   Promo = 'PROMO'
 }
