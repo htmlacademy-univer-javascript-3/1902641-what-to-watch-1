@@ -3,7 +3,7 @@ import UserBlock from '../user-block/user-block';
 import {useAppSelector} from '../../hooks';
 import {getFavoriteCount, getPromo} from '../../store/main-data/selectors';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
-import {favoriteClickType} from '../../const';
+import {FavoriteClickType} from '../../const';
 import FilmCardButtons from '../film-card-buttons/film-card-buttons';
 
 function PromoCard(): JSX.Element {
@@ -47,7 +47,7 @@ function PromoCard(): JSX.Element {
               authStatus={authStatus}
               film={promo}
               favoriteCount={favoriteCount}
-              favoriteType={favoriteClickType.Promo}
+              favoriteType={FavoriteClickType.Promo}
             />
           </div>
         </div>

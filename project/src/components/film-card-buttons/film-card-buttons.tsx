@@ -1,4 +1,4 @@
-import {AppRoute, AuthorizationStatus, favoriteClickType} from '../../const';
+import {AppRoute, AuthorizationStatus, FavoriteClickType} from '../../const';
 import {Link, useNavigate} from 'react-router-dom';
 import Film from '../../types/film';
 import {FilmStatus} from '../../types/film-status';
@@ -25,7 +25,7 @@ function FilmCardButtons(FilmCardButtonsProps: FilmCardButtonsProps): JSX.Elemen
       status: film?.isFavorite ? 0 : 1
     };
 
-    if (favoriteType === favoriteClickType.Film) {
+    if (favoriteType === FavoriteClickType.Film) {
       dispatch(changeFilmStatusToView(filmStatus));
     } else {
       dispatch(changePromoStatusToView(filmStatus));

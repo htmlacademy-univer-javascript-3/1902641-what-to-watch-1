@@ -16,7 +16,7 @@ import SimilarList from '../../components/similar-list/similar-list';
 import LoadingPage from '../loading-page/loading-page';
 import WarningPage from '../warning-page/warning-page';
 
-import {AuthorizationStatus, favoriteClickType, FilmPageTabs} from '../../const';
+import {AuthorizationStatus, FavoriteClickType, FilmPageTabs} from '../../const';
 import {getFilm, getIsFilmFoundStatus, getIsFilmLoadingStatus, getSimilar} from '../../store/film-data/selectors';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
 import {changeFilmTab} from '../../store/film-data/film-data';
@@ -87,7 +87,7 @@ function FilmPage(): JSX.Element {
                 authStatus={authStatus}
                 film={film}
                 favoriteCount={favoriteCount}
-                favoriteType={favoriteClickType.Film}
+                favoriteType={FavoriteClickType.Film}
               />
             </div>
           </div>
